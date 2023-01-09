@@ -26,7 +26,7 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var OTP: String
     private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
-    private lateinit var getotp : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
