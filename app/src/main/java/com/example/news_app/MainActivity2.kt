@@ -1,5 +1,6 @@
 package com.example.news_app
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import androidx.appcompat.app.AppCompatActivity
@@ -23,25 +24,36 @@ import java.util.concurrent.TimeUnit
 class MainActivity2 : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var otp : String
-    private lateinit var Number : String
-    private lateinit var otpsent : TextView
-    private lateinit var resendotp : TextView
+    private lateinit var OTP: String
+    private lateinit var resendToken: PhoneAuthProvider.ForceResendingToken
     private lateinit var getotp : TextView
-    private lateinit var Verify : Button
-    private lateinit var OTP : String
-    private lateinit var resendToken : PhoneAuthProvider.ForceResendingToken
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
 
-        auth = Firebase.auth
-        otp = findViewById<EditText>(R.id.editText2).text.toString()
-        Number = findViewById<EditText>(R.id.editText).text.toString()
+        auth = FirebaseAuth.getInstance()
+        var otp = findViewById<EditText>(R.id.editText2)
+        var otpsent = findViewById<TextView>(R.id.textView4)
+        var phNumber = findViewById<EditText>(R.id.editText)
+        var getotp = findViewById<TextView>(R.id.textView6)
+        var resendotp = findViewById<TextView>(R.id.textView5)
         resendotp.visibility = View.INVISIBLE
+        var Verify = findViewById<Button>(R.id.button)
+        Verify.setOnClickListener{
+            var otp = otp.text.toString()
+            if (otp.length == 6)
+            {
+                val credential : PhoneAuthCredential = PhoneAuthProvider.getCredential(OTP,otp)
+                signInWithPhoneAuthCredential(credential)
+            }
+            else
+            {
+                Toast.makeText(this,"ENTER CORRECT OTP",Toast.LENGTH_SHORT).show()
+            }
+        }
 
         getotp.setOnClickListener {
+            var Number = phNumber.text.toString()
             if (Number.length == 10)
             {
                 var phoneNumber = "+91$Number"
@@ -52,35 +64,24 @@ class MainActivity2 : AppCompatActivity() {
                     .setCallbacks(callbacks)
                     .build()
                 PhoneAuthProvider.verifyPhoneNumber(options)
-                resendOTPVisibility()
+                   getotp.visibility = View.INVISIBLE
+                resendotp.visibility = View.VISIBLE
             }
             else
             {
                 Toast.makeText(this,"ENTER CORRECT NUMBER",Toast.LENGTH_SHORT).show()
             }
-        }
-        Verify = findViewById<Button>(R.id.button)
-        Verify.setOnClickListener{
-            if (otp.length == 6)
-            {
-             val credential : PhoneAuthCredential = PhoneAuthProvider.getCredential(OTP,otp)
-                signInWithPhoneAuthCredential(credential)
+            resendotp.setOnClickListener {
+                var Number = phNumber.text.toString()
+                var phoneNumber = "+91$Number"
+                val options = PhoneAuthOptions.newBuilder(auth)
+                    .setPhoneNumber(phoneNumber)
+                    .setTimeout(60L, TimeUnit.SECONDS)
+                    .setActivity(this)
+                    .setCallbacks(callbacks)
+                    .build()
+                PhoneAuthProvider.verifyPhoneNumber(options)
             }
-            else
-            {
-                Toast.makeText(this,"ENTER CORRECT OTP",Toast.LENGTH_SHORT).show()
-            }
-        }
-        resendotp.setOnClickListener{
-        var phoneNumber = "+91$Number"
-            val options = PhoneAuthOptions.newBuilder(auth)
-                .setPhoneNumber(phoneNumber)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(this)
-                .setCallbacks(callbacks)
-                .setForceResendingToken(resendToken)
-                .build()
-            PhoneAuthProvider.verifyPhoneNumber(options)
         }
     }
 
@@ -116,8 +117,8 @@ class MainActivity2 : AppCompatActivity() {
             Log.d("TAG", "onCodeSent:$verificationId")
 
             // Save verification ID and resending token so we can use them later
-            OTP = verificationId
-            resendToken = token
+             OTP = verificationId
+             resendToken = token
         }
     }
     private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
@@ -146,16 +147,8 @@ class MainActivity2 : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        if(currentUser != null){
-            startActivity(Intent(this,MainActivity::class.java))
+        if (currentUser != null) {
+            startActivity(Intent(this, MainActivity::class.java))
         }
-    }
-    private fun resendOTPVisibility() {
-        resendotp.isEnabled = false
-
-        Handler(Looper.myLooper()!!).postDelayed(Runnable {
-            resendotp.visibility = View.VISIBLE
-            resendotp.isEnabled = true
-        }, 60000)
     }
 }
