@@ -19,9 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        newrecyclerview = findViewById(R.id.Recyclerview)
-        newrecyclerview.layoutManager = LinearLayoutManager(this)
-        newrecyclerview.hasFixedSize()
+
         getData()
 
 
@@ -42,8 +40,10 @@ class MainActivity : AppCompatActivity() {
                 val news = response.body()
                 if(news!=null)
                 {
+                    newrecyclerview = findViewById(R.id.Recyclerview)
                     adapter = ADPATER(this@MainActivity , news.articles )
                     newrecyclerview.adapter = adapter
+                    newrecyclerview.layoutManager = LinearLayoutManager(this@MainActivity)
                 }
             }
 
