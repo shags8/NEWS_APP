@@ -1,5 +1,6 @@
 package com.example.news_app
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.google.android.material.imageview.ShapeableImageView
 
-class ADPATER(private val newslist : ArrayList<News>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
+class ADPATER(val context : Context , val newslist : ArrayList<DataClassNews>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
 
     override fun getItemCount(): Int {
         return  newslist.size
@@ -22,8 +23,7 @@ class ADPATER(private val newslist : ArrayList<News>) : RecyclerView.Adapter<ADP
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         val currentItem = newslist[position]
-        holder.image.setImageResource(currentItem.displaypicture)
-        holder.headingview.text = currentItem.heading
+        holder.headingview.text = currentItem.title
     }
     class Viewholder(item : View) : RecyclerView.ViewHolder(item)
     {
