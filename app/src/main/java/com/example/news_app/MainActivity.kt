@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.commit()
     } */
     private fun getData() {
-        RetrofitApi.apiInterface.getData().enqueue(object : Callback<DataClass?> {
+        RetrofitApi.apiInterface.getData().enqueue(object : Callback<News?> {
             override fun onResponse(
-                call: Call<DataClass?>,
-                response: Response<DataClass?>
+                call: Call<News?>,
+                response: Response<News?>
             ) {
                 val news = response.body()
                 if(news!=null)
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<DataClass?>, t: Throwable) {
+            override fun onFailure(call: Call<News?>, t: Throwable) {
             }
         })
     }

@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
 class ADPATER(val context : Context , val newslist : ArrayList<DataClassNews>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
@@ -17,13 +18,14 @@ class ADPATER(val context : Context , val newslist : ArrayList<DataClassNews>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Viewholder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list,parent,false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list2,parent,false)
         return Viewholder(itemView)
     }
 
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         val currentItem = newslist[position]
         holder.headingview.text = currentItem.title
+        Glide.with(context).load(currentItem.urlToImage).into(holder.image)
     }
     class Viewholder(item : View) : RecyclerView.ViewHolder(item)
     {
