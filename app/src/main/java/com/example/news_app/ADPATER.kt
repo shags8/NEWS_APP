@@ -1,17 +1,14 @@
 package com.example.news_app
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
-class ADPATER(val context : Context , val newslist : ArrayList<DataClassNews>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
+class ADPATER(val context: news_1, val newslist: ArrayList<DataClass>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
 
     override fun getItemCount(): Int {
         return  newslist.size
