@@ -66,10 +66,10 @@
             android:id="@+id/Science"/>
 
     </com.google.android.material.tabs.TabLayout>
-   <androidx.viewpager.widget.ViewPager
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:id="@+id/viewPager"
-       android:layout_below="@id/taskbar"
-       android:layout_alignParentBottom="true"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frame"
+        android:layout_below="@id/taskbar"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
