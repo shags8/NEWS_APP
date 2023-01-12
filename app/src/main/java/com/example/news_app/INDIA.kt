@@ -24,6 +24,11 @@ class INDIA : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        newrecyclerview
+        adapter = ADPATER( articles as ArrayList<DataClass>)
+        newrecyclerview.adapter = adapter
+        newrecyclerview.layoutManager = LinearLayoutManager(context)
+        getData()
     }
 
     override fun onCreateView(
@@ -31,22 +36,24 @@ class INDIA : Fragment() {
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_i_n_d_i_a, container, false)
+
+
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+   /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         newrecyclerview = view.findViewById(R.id.Recyclerview)
-        adapter = ADPATER(this@INDIA , articles as ArrayList<DataClass>)
+        adapter = ADPATER( articles as ArrayList<DataClass>)
         newrecyclerview.adapter = adapter
         newrecyclerview.layoutManager = LinearLayoutManager(context)
         getData()
 
 
 
-    }
+    }*/
     private fun getData() {
-        RetrofitApi.apiInterface.getData(pagenumber).enqueue(object : Callback<News?> {
+        RetrofitApi.apiInterface.getIndia(pagenumber).enqueue(object : Callback<News?> {
             override fun onResponse(
                 call: Call<News?>,
                 response: Response<News?>
