@@ -45,6 +45,7 @@ class MainActivity2 : AppCompatActivity() {
             {
                 val credential : PhoneAuthCredential = PhoneAuthProvider.getCredential(OTP,otp)
                 signInWithPhoneAuthCredential(credential)
+
             }
             else
             {
@@ -129,7 +130,6 @@ class MainActivity2 : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("TAG", "signInWithCredential:success")
                     startActivity(Intent(this,MainActivity::class.java))
-
                     val user = task.result?.user
                 } else {
                     Toast.makeText(this,"Sign in failed",Toast.LENGTH_SHORT)
