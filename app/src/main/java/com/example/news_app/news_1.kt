@@ -36,9 +36,11 @@ class news_1 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         newrecyclerview = view.findViewById(R.id.Recyclerview)
-        adapter = ADPATER(this@news_1 , articles as ArrayList<DataClass>)
+        adapter = ADPATER(articles as ArrayList<DataClass>)
+        var layoutmanager = LinearLayoutManager(context)
         newrecyclerview.adapter = adapter
-        newrecyclerview.layoutManager = LinearLayoutManager(context)
+        if (totalresults > layoutmanager.itemCount)
+        newrecyclerview.layoutManager = layoutmanager
         getData()
 
 
