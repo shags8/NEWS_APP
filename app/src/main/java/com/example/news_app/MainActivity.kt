@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayout.Tab
@@ -19,6 +20,7 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     lateinit var newrecyclerview : RecyclerView
+
     lateinit var adapter : ADPATER
     var pagenumber = 1
     var totalresults = -1
@@ -30,24 +32,23 @@ class MainActivity : AppCompatActivity() {
     var buisness = findViewById<TextView>(R.id.Buisness)
     var science = findViewById<TextView>(R.id.Science)
     lateinit var tabLayout: TabLayout
+    lateinit var viewPager : ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(news_1())
+        val fragmentManager = supportFragmentManager
         tabLayout = findViewById(R.id.taskbar)
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnSelectedListener)
-        india.setOnClickListener{
-        }
-
+        viewPager.adapter = PAGEADPATER(fragmentManager)
+        tabLayout.setupWithViewPager(viewPager)
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+   /* private fun replaceFragment(fragment: Fragment) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frame,fragment)
         fragmentTransaction.commit()
-    }
+    }*/
     private fun getData() {
         RetrofitApi.apiInterface.getData(pagenumber).enqueue(object : Callback<News?> {
             override fun onResponse(

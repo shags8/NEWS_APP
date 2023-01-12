@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
-class ADPATER(val context: news_1, val newslist: ArrayList<DataClass>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
+class ADPATER(val context : news_1 , val newslist: ArrayList<DataClass>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
 
     override fun getItemCount(): Int {
         return  newslist.size
