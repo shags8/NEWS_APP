@@ -12,7 +12,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class Buisness : Fragment() {
+class Business : Fragment() {
 
     lateinit var newrecyclerview : RecyclerView
     lateinit var adapter : ADPATER
@@ -38,7 +38,7 @@ class Buisness : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         newrecyclerview = view.findViewById(R.id.Recyclerview)
-       // adapter = ADPATER(this@Buisness , articles as ArrayList<DataClass>)
+       adapter = ADPATER( articles as ArrayList<DataClass>)
         newrecyclerview.adapter = adapter
         newrecyclerview.layoutManager = LinearLayoutManager(context)
         getData()
@@ -47,7 +47,7 @@ class Buisness : Fragment() {
 
     }
     private fun getData() {
-        RetrofitApi.apiInterface.getData(pagenumber).enqueue(object : Callback<News?> {
+        RetrofitApi.apiInterface.getBusiness(pagenumber).enqueue(object : Callback<News?> {
             override fun onResponse(
                 call: Call<News?>,
                 response: Response<News?>

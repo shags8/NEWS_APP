@@ -10,16 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import androidx.viewpager2.widget.ViewPager2
 
-class INDIA : Fragment() {
+
+class Sports : Fragment() {
 
     lateinit var newrecyclerview : RecyclerView
     lateinit var adapter : ADPATER
     var pagenumber = 1
     var totalresults = -1
     var articles = mutableListOf<DataClass>()
-    var country = "in"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +29,9 @@ class INDIA : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_i_n_d_i_a, container, false)
+        return inflater.inflate(R.layout.fragment_sports, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,7 +45,7 @@ class INDIA : Fragment() {
 
     }
     private fun getData() {
-        RetrofitApi.apiInterface.getIndia(country,pagenumber).enqueue(object : Callback<News?> {
+        RetrofitApi.apiInterface.getSports(pagenumber).enqueue(object : Callback<News?> {
             override fun onResponse(
                 call: Call<News?>,
                 response: Response<News?>

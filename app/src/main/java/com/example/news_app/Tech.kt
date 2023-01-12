@@ -36,7 +36,7 @@ class Tech : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         newrecyclerview = view.findViewById(R.id.Recyclerview)
-        //adapter = ADPATER(this@Tech , articles as ArrayList<DataClass>)
+        adapter = ADPATER( articles as ArrayList<DataClass>)
         newrecyclerview.adapter = adapter
         newrecyclerview.layoutManager = LinearLayoutManager(context)
         getData()
@@ -45,7 +45,7 @@ class Tech : Fragment() {
 
     }
     private fun getData() {
-        RetrofitApi.apiInterface.getData(pagenumber).enqueue(object : Callback<News?> {
+        RetrofitApi.apiInterface.getTech(pagenumber).enqueue(object : Callback<News?> {
             override fun onResponse(
                 call: Call<News?>,
                 response: Response<News?>

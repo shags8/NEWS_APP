@@ -55,10 +55,10 @@
             android:text="Sports"
             android:id="@+id/Sports"/>
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/Buisness"
+            android:id="@+id/Business"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buisness" />
+            android:text="Business" />
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             android:id="@+id/Science"/>
 
     </com.google.android.material.tabs.TabLayout>
-    <FrameLayout
+    <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/frame"

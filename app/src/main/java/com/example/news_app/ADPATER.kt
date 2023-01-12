@@ -1,5 +1,6 @@
 package com.example.news_app
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
-class ADPATER(val context: INDIA, val newslist: ArrayList<DataClass>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
+class ADPATER( val newslist: ArrayList<DataClass>) : RecyclerView.Adapter<ADPATER.Viewholder>(){
 
     override fun getItemCount(): Int {
         return  newslist.size
@@ -22,7 +23,7 @@ class ADPATER(val context: INDIA, val newslist: ArrayList<DataClass>) : Recycler
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         val currentItem = newslist[position]
         holder.headingview.text = currentItem.title
-        Glide.with(context).load(currentItem.urlToImage).into(holder.image)
+       // Glide.with(context).load(currentItem.urlToImage).into(holder.image)
     }
     class Viewholder(item : View) : RecyclerView.ViewHolder(item)
     {
