@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import androidx.viewpager2.widget.ViewPager2
 
 class INDIA : Fragment() {
 
@@ -36,7 +35,7 @@ class INDIA : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         newrecyclerview = view.findViewById(R.id.Recyclerview)
-        adapter = ADPATER( articles as ArrayList<DataClass>)
+        adapter = ADPATER(articles as ArrayList<DataClass>,)
         newrecyclerview.adapter = adapter
         newrecyclerview.layoutManager = LinearLayoutManager(context)
         getData()

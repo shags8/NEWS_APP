@@ -11,13 +11,15 @@
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true"
         android:id="@+id/Name"
+        android:padding="4dp"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="NEWS"
+            android:gravity="center|left"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textColor="@color/black"
             />
     </androidx.appcompat.widget.Toolbar>
