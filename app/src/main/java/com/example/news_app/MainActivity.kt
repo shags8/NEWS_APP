@@ -11,17 +11,12 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var newrecyclerview : RecyclerView
-    lateinit var adapter : ADPATER
-    var pagenumber = 1
-    var totalresults = -1
-    var articles = mutableListOf<DataClass>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val fragmentManager = supportFragmentManager
-        replaceFragment(news_1())
+        replaceFragment(INDIA())
     }
 
     private fun replaceFragment(fragment: Fragment) {
@@ -30,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.replace(R.id.frame,fragment)
         fragmentTransaction.commit()
     }
-    private fun getData() {
+   /* private fun getData() {
         RetrofitApi.apiInterface.getData(pagenumber).enqueue(object : Callback<News?> {
             override fun onResponse(
                 call: Call<News?>,
@@ -48,5 +43,5 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call<News?>, t: Throwable) {
             }
         })
-    }
+    }*/
 }
