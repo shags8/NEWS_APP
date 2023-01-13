@@ -38,7 +38,7 @@ class Business : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         newrecyclerview = view.findViewById(R.id.Recyclerview)
-       adapter = ADPATER(articles as ArrayList<DataClass>,)
+       adapter = ADPATER(activity,articles as ArrayList<DataClass>,)
         newrecyclerview.adapter = adapter
         newrecyclerview.layoutManager = LinearLayoutManager(context)
         getData()

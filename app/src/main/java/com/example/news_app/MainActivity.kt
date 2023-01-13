@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val fragmentManager = supportFragmentManager
-        // replaceFragment(INDIA())
         val viewPager: ViewPager2 = findViewById(R.id.frame)
         val tabLayout: TabLayout = findViewById(R.id.taskbar)
         viewPager.adapter = FragmentAdpater(this)

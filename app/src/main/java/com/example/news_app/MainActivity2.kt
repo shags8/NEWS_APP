@@ -33,7 +33,6 @@ class MainActivity2 : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         var otp = findViewById<EditText>(R.id.editText2)
-        var otpsent = findViewById<TextView>(R.id.textView4)
         var phNumber = findViewById<EditText>(R.id.editText)
         var getotp = findViewById<TextView>(R.id.textView6)
         var resendotp = findViewById<TextView>(R.id.textView5)

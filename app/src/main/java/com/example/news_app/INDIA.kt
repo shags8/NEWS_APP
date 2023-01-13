@@ -35,8 +35,15 @@ class INDIA : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         newrecyclerview = view.findViewById(R.id.Recyclerview)
-        adapter = ADPATER(articles as ArrayList<DataClass>,)
+        adapter = ADPATER(activity, articles as ArrayList<DataClass>)
         newrecyclerview.adapter = adapter
+       /* adapter.setOnItemClickListener(object : ADPATER.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                val intent = Intent(activity , Body::class.java)
+                intent.putExtra("Heading" , news.)
+            }
+
+        })*/
         newrecyclerview.layoutManager = LinearLayoutManager(context)
         getData()
 
