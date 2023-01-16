@@ -130,6 +130,7 @@ class MainActivity2 : AppCompatActivity() {
                     Log.d("TAG", "signInWithCredential:success")
                     startActivity(Intent(this,MainActivity::class.java))
                     val user = task.result?.user
+                    finish()
                 } else {
                     Toast.makeText(this,"Sign in failed",Toast.LENGTH_SHORT)
                     // Sign in failed, display a message and update the UI
@@ -148,6 +149,7 @@ class MainActivity2 : AppCompatActivity() {
         val currentUser = auth.currentUser
         if (currentUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }

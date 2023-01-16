@@ -4,42 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F0e6f6"
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:id="@+id/Name"
-        android:padding="4dp"
         >
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="NEWS"
+            android:layout_height="wrap_content"
+            android:text="HELLO!!"
             android:gravity="center|left"
             android:textStyle="bold"
             android:textSize="30sp"
             android:textColor="@color/black"
             />
     </androidx.appcompat.widget.Toolbar>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text5"
+        android:layout_below="@id/Name"
+        android:paddingStart="16.5dp"
+        android:text="Explore today’s news"
+        android:gravity="center|left"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="#434343"
+        />
 
     <com.google.android.material.tabs.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:id="@+id/taskbar"
-        android:layout_below="@id/Name"
-        android:backgroundTint="@color/black"
-        app:tabTextColor="@color/white"
-        app:tabSelectedTextColor="@color/purple_200"
-        app:tabIndicatorHeight="3dp"
-        app:tabIndicatorColor="#03A9F4"
+        android:layout_below="@id/text5"
+        android:layout_marginTop="10dp"
+        app:tabTextColor="@color/black"
+        android:background="#F1e9fa"
+        app:tabMinWidth="100dp"
+        app:tabSelectedTextColor="@color/white"
+        app:tabBackground="@drawable/customtab"
+        app:tabIndicatorHeight="0dp"
         app:tabMode="scrollable">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Home"
+            android:text="ALL"
             android:id="@+id/home"/>
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

@@ -38,6 +38,15 @@ class ADPATER( var context: FragmentActivity? , val newslist: ArrayList<DataClas
     override fun onBindViewHolder(holder: Viewholder, position: Int) {
         val currentItem = newslist[position]
         holder.headingview.text = currentItem.title
+        holder.source.text = currentItem.author
+
+        if (currentItem.author == null){
+            holder.source.text = "unavailable"
+        }
+        holder.time.text = currentItem.publishedAt
+        if (currentItem.publishedAt == null){
+            holder.time.text = "unavailable"
+        }
         //context?.let { Glide.with(it).load(currentItem.urlToImage).into(holder.image) }
         Picasso.get().load(currentItem.urlToImage).into(holder.image)
       holder.itemView.setOnClickListener {
@@ -51,5 +60,7 @@ class ADPATER( var context: FragmentActivity? , val newslist: ArrayList<DataClas
     {
         val image :ShapeableImageView = itemView.findViewById(R.id.list_item)
         val headingview : TextView = itemView.findViewById(R.id.textView)
+        val source : TextView = itemView.findViewById(R.id.source)
+        val time : TextView = itemView.findViewById(R.id.time)
         }
     }
