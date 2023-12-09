@@ -3,6 +3,7 @@ package com.example.news_app
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.os.Build.VERSION_CODES.R
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -44,7 +45,6 @@ class MainActivity2 : AppCompatActivity() {
             {
                 val credential : PhoneAuthCredential = PhoneAuthProvider.getCredential(OTP,otp)
                 signInWithPhoneAuthCredential(credential)
-
             }
             else
             {
